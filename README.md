@@ -1,2 +1,10 @@
-# AniBIM-FT-Help
-Official documentation for AniBIM FT – a productivity toolkit for Autodesk Revit. Includes tool guides, workflows, settings reference, and user support resources.
+# AniBIM FT Documentation
+
+Official documentation for AniBIM FT, a productivity toolkit for Autodesk Revit.
+
+Includes:
+- Tool guides
+- Workflow examples
+- Settings reference
+- Release information
+- User support resources
