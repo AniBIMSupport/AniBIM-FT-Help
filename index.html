@@ -19,7 +19,7 @@ section h2,section h3{margin:0 0 10px}.grid{display:grid;grid-template-columns:m
 .badge{display:inline-block;background:var(--soft);color:#9a4308;border:1px solid #ffd8bc;padding:3px 8px;border-radius:999px;font-size:12px;margin-bottom:10px}
 ul{padding-left:20px}.note{background:#f7f8fa;border-left:4px solid var(--accent);padding:11px 13px;margin:12px 0;color:#333}
 figure{margin:0 0 14px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}figure img{width:100%;display:block}figcaption{font-size:12px;color:var(--muted);padding:7px 10px;border-top:1px solid var(--line);background:#fafafa}
-[data-lang]{display:none}body.lang-en [data-lang=en]{display:block}body.lang-de [data-lang=de]{display:block}
+[data-lang]{display:none}body.lang-en [data-lang=en]{display:block}body.lang-de [data-lang=de]{display:block}.lang-content{display:none}body.lang-en .lang-content.en{display:block}body.lang-de .lang-content.de{display:block}
 footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 @media(max-width:1000px){.wrap{grid-template-columns:1fr;padding:18px}nav{position:static;max-height:none}.grid{grid-template-columns:1fr}header{padding:22px 18px}}
 </style>
@@ -47,7 +47,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 </nav>
 <main>
 
-<div data-lang="en">
+<div class="lang-content en">
 <section id="overview"><h2>Overview</h2><p><b>AniBIM FT</b> is organized by ribbon panels. Use the documentation links or contextual help to jump directly to the selected tool.</p><figure><img src="assets/ribbon_en.jpg" alt="English AniBIM FT ribbon" loading="lazy"><figcaption>English AniBIM FT ribbon</figcaption></figure></section>
 
 <h2 class="panel">Selection Panel</h2>
@@ -75,7 +75,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 <section id="settings"><h2>Settings</h2><p>Settings store default behavior and company configuration for AniBIM FT.</p><ul><li>Load JSON File: load a company settings profile.</li><li>Export JSON File: export current settings.</li><li>Local/Profile box: shows the active settings profile.</li></ul><figure><img src="assets/settings_general.jpg" alt="General settings" loading="lazy"><figcaption>General settings</figcaption></figure></section>
 </div>
 
-<div data-lang="de">
+<div class="lang-content de">
 <section id="overview"><h2>Übersicht</h2><p><b>AniBIM FT</b> ist nach Ribbon-Bereichen geordnet. Über die Hilfe-Links kann direkt zur Dokumentation des jeweiligen Werkzeugs gesprungen werden.</p><figure><img src="assets/ribbon_de.jpg" alt="Deutscher AniBIM FT Ribbon" loading="lazy"><figcaption>Deutscher AniBIM FT Ribbon</figcaption></figure></section>
 
 <h2 class="panel">Auswahl</h2>
@@ -105,8 +105,49 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 </main></div>
 <footer>AniBIM FT Documentation</footer>
 <script>
-function norm(v){if(!v)return"en";v=v.toLowerCase();return v.indexOf("de")===0||v==="german"||v==="deutsch"?"de":"en";}
-function setLanguage(l){l=norm(l);document.body.classList.remove("lang-en","lang-de");document.body.classList.add("lang-"+l);document.documentElement.lang=l;document.getElementById("btn-en").classList.toggle("active",l==="en");document.getElementById("btn-de").classList.toggle("active",l==="de");}
-(function(){let p=new URLSearchParams(location.search);setLanguage(p.get("lang")||navigator.language||"en");})();
+function normalizeLanguage(value) {
+  if (!value) {
+    return "en";
+  }
+
+  value = String(value).toLowerCase();
+
+  if (
+    value.indexOf("de") === 0 ||
+    value === "german" ||
+    value === "deutsch"
+  ) {
+    return "de";
+  }
+
+  return "en";
+}
+
+function setLanguage(language) {
+  var lang = normalizeLanguage(language);
+
+  document.body.classList.remove("lang-en", "lang-de");
+  document.body.classList.add("lang-" + lang);
+  document.documentElement.setAttribute("lang", lang);
+
+  var btnEn = document.getElementById("btn-en");
+  var btnDe = document.getElementById("btn-de");
+
+  if (btnEn) {
+    btnEn.classList.toggle("active", lang === "en");
+  }
+
+  if (btnDe) {
+    btnDe.classList.toggle("active", lang === "de");
+  }
+}
+
+(function initializeLanguage() {
+  var params = new URLSearchParams(window.location.search);
+  var queryLanguage = params.get("lang");
+  var browserLanguage = navigator.language || navigator.userLanguage || "en";
+
+  setLanguage(queryLanguage || browserLanguage);
+})();
 </script>
 </body></html>
