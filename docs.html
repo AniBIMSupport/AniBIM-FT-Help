@@ -19,7 +19,7 @@ section h2,section h3{margin:0 0 10px}.grid{display:grid;grid-template-columns:m
 .badge{display:inline-block;background:var(--soft);color:#9a4308;border:1px solid #ffd8bc;padding:3px 8px;border-radius:999px;font-size:12px;margin-bottom:10px}
 ul{padding-left:20px}.note{background:#f7f8fa;border-left:4px solid var(--accent);padding:11px 13px;margin:12px 0;color:#333}
 figure{margin:0 0 14px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}figure img{width:100%;display:block}figcaption{font-size:12px;color:var(--muted);padding:7px 10px;border-top:1px solid var(--line);background:#fafafa}
-[data-lang]{display:none}body.lang-en [data-lang=en]{display:block}body.lang-de [data-lang=de]{display:block}.lang-content{display:none}body.lang-en .lang-content.en{display:block}body.lang-de .lang-content.de{display:block}
+[data-lang]{display:none}.lang-content{display:none}body.lang-en .lang-content.en{display:block}body.lang-de .lang-content.de{display:block}
 footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 @media(max-width:1000px){.wrap{grid-template-columns:1fr;padding:18px}nav{position:static;max-height:none}.grid{grid-template-columns:1fr}header{padding:22px 18px}}
 
@@ -28,38 +28,74 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:22px}
 .site-actions a.primary{background:var(--accent);border-color:var(--accent)}
 .header-tools{display:flex;flex-direction:column;align-items:flex-end}
 
+
+/* AniBIM language display hardening */
+[data-lang]{display:none !important}
+body.lang-en [data-lang="en"]{display:initial !important}
+body.lang-de [data-lang="de"]{display:initial !important}
+body.lang-en .lang-content.en{display:block !important}
+body.lang-de .lang-content.de{display:block !important}
+body.lang-en .lang-content.de,
+body.lang-de .lang-content.en{display:none !important}
+.site-actions [data-lang]{display:none !important}
+body.lang-en .site-actions [data-lang="en"],
+body.lang-de .site-actions [data-lang="de"]{display:inline-block !important}
+.nav-actions [data-lang]{display:none !important}
+body.lang-en .nav-actions [data-lang="en"],
+body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
+
 </style>
 </head>
 <body class="lang-en">
 <header><div class="top"><div><h1>AniBIM</h1><div class="subtitle">AniBIM FT</div><p data-lang="en">Simple help for the AniBIM FT Revit tools, arranged exactly by ribbon panel.</p><p data-lang="de">Einfache Hilfe für die AniBIM-FT-Revit-Werkzeuge, exakt nach Ribbon-Bereich geordnet.</p></div><div class="header-tools">
 <div class="site-actions">
-<a href="index.html" data-lang="en">Home</a><a href="index.html" data-lang="de">Start</a>
-<a href="product.html" data-lang="en">Product</a><a href="product.html" data-lang="de">Produkt</a>
-<a href="trial.html" class="primary" data-lang="en">Request Trial</a><a href="trial.html" class="primary" data-lang="de">Testversion</a>
-<a href="pricing.html" data-lang="en">Purchase</a><a href="pricing.html" data-lang="de">Kaufen</a>
-<a href="about.html" data-lang="en">About</a><a href="about.html" data-lang="de">Über uns</a>
-<a href="download.html" data-lang="en">Download</a><a href="download.html" data-lang="de">Download</a>
+<a href="index.html" data-keep-lang="true" data-lang="en">Home</a><a href="index.html" data-keep-lang="true" data-lang="de">Start</a>
+<a href="product.html" data-keep-lang="true" data-lang="en">Product</a><a href="product.html" data-keep-lang="true" data-lang="de">Produkt</a>
+<a href="trial.html" data-keep-lang="true" class="primary" data-lang="en">Request Trial</a><a href="trial.html" data-keep-lang="true" class="primary" data-lang="de">Testversion</a>
+<a href="pricing.html" data-keep-lang="true" data-lang="en">Purchase</a><a href="pricing.html" data-keep-lang="true" data-lang="de">Kaufen</a>
+<a href="about.html" data-keep-lang="true" data-lang="en">About</a><a href="about.html" data-keep-lang="true" data-lang="de">Über uns</a>
+<a href="download.html" data-keep-lang="true" data-lang="en">Download</a><a href="download.html" data-keep-lang="true" data-lang="de">Download</a>
 </div>
 <div class="lang"><button id="btn-en" onclick="setLanguage('en')">English</button> <button id="btn-de" onclick="setLanguage('de')">Deutsch</button></div>
 </div></div></header>
 <div class="wrap">
 <nav>
+<div data-lang="en">
 <h3>Tools</h3>
-<a href="#overview">Overview / Übersicht</a>
+<a href="#overview">Overview</a>
 <a href="#smart-selection">Smart Selection</a>
-<a href="#invert">Invert / Umkehren</a>
+<a href="#invert">Invert</a>
 <a href="#browser">Browser</a>
-<a href="#select-similar">Category / Kategorie</a>
+<a href="#select-similar">Category / Select Similar</a>
 <a href="#visibility-browser">Visibility Browser</a>
-<a href="#spotlight">Spotlight / Hervorheben</a>
+<a href="#spotlight">Spotlight</a>
 <a href="#transparent">Transparent</a>
 <a href="#toggle-parts">ToggleParts</a>
 <a href="#sections-selectionbox">Sections by SelectionBox</a>
 <a href="#rebar-number">Rebar Number</a>
-<a href="#partition">Partition / Teilung</a>
+<a href="#partition">Partition</a>
 <a href="#warnings">Solve Warnings</a>
 <a href="#rebar-clashes">Rebar Clashes</a>
 <a href="#settings">Settings</a>
+</div>
+<div data-lang="de">
+<h3>Werkzeuge</h3>
+<a href="#overview">Übersicht</a>
+<a href="#smart-selection">Intelligente Auswahl</a>
+<a href="#invert">Umkehren</a>
+<a href="#browser">Browser</a>
+<a href="#select-similar">Kategorie / Ähnliche auswählen</a>
+<a href="#visibility-browser">Sichtbarkeitsbrowser</a>
+<a href="#spotlight">Hervorheben</a>
+<a href="#transparent">Transparent</a>
+<a href="#toggle-parts">ToggleParts</a>
+<a href="#sections-selectionbox">Schnitte nach Auswahlbox</a>
+<a href="#rebar-number">Bewehrungsnummer</a>
+<a href="#partition">Teilung</a>
+<a href="#warnings">Warnungen lösen</a>
+<a href="#rebar-clashes">Bewehrungskollisionen</a>
+<a href="#settings">Einstellungen</a>
+</div>
 </nav>
 <main>
 
@@ -156,6 +192,17 @@ function setLanguage(language) {
   if (btnDe) {
     btnDe.classList.toggle("active", lang === "de");
   }
+
+  document.querySelectorAll("a[data-keep-lang='true']").forEach(function(link) {
+    var baseHref = link.getAttribute("data-base-href");
+
+    if (!baseHref) {
+      baseHref = link.getAttribute("href").split("?")[0];
+      link.setAttribute("data-base-href", baseHref);
+    }
+
+    link.setAttribute("href", baseHref + "?lang=" + lang);
+  });
 }
 
 (function initializeLanguage() {

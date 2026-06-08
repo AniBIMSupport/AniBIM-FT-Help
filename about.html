@@ -82,8 +82,7 @@ textarea{min-height:96px;resize:vertical}
 .footer{background:#1b1d20;color:#c9d1d9;padding:26px 28px;text-align:center;font-size:14px}
 .footer a{color:#fff}
 [data-lang]{display:none}
-body.lang-en [data-lang=en]{display:block}
-body.lang-de [data-lang=de]{display:block}
+
 .lang-content{display:none}
 body.lang-en .lang-content.en{display:block}
 body.lang-de .lang-content.de{display:block}
@@ -99,6 +98,22 @@ body.lang-de .lang-content.de{display:block}
   .nav-actions{gap:6px}
   .nav-link{padding:7px 8px}
 }
+
+/* AniBIM language display hardening */
+[data-lang]{display:none !important}
+body.lang-en [data-lang="en"]{display:initial !important}
+body.lang-de [data-lang="de"]{display:initial !important}
+body.lang-en .lang-content.en{display:block !important}
+body.lang-de .lang-content.de{display:block !important}
+body.lang-en .lang-content.de,
+body.lang-de .lang-content.en{display:none !important}
+.site-actions [data-lang]{display:none !important}
+body.lang-en .site-actions [data-lang="en"],
+body.lang-de .site-actions [data-lang="de"]{display:inline-block !important}
+.nav-actions [data-lang]{display:none !important}
+body.lang-en .nav-actions [data-lang="en"],
+body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
+
 </style>
 </head>
 <body class="lang-en">
