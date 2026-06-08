@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AniBIM FT</title>
+<title>AniBIM FT Trial Request</title>
 <style>
 :root{
   --accent:#DF7026;
@@ -124,86 +124,50 @@ body.lang-de .lang-content.de{display:block}
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div data-lang="en">
-        <span class="badge">Revit Productivity Suite</span>
-        <h1>Model control, reinforcement workflows and QA tools for Revit.</h1>
-        <p>AniBIM FT helps BIM teams select, isolate, review, renumber and validate Revit models with practical production-focused tools.</p>
-        <div class="btn-row">
-          <a class="btn" href="trial.html" data-keep-lang="true">Request Trial</a>
-          <a class="btn secondary" href="product.html" data-keep-lang="true">Explore Features</a>
-          <a class="btn ghost" href="docs.html" data-keep-lang="true">Open Documentation</a>
-        </div>
-      </div>
-      <div data-lang="de">
-        <span class="badge">Revit Produktivitäts-Suite</span>
-        <h1>Modellkontrolle, Bewehrungsabläufe und QA-Werkzeuge für Revit.</h1>
-        <p>AniBIM FT unterstützt BIM-Teams beim Auswählen, Isolieren, Prüfen, Nummerieren und Validieren von Revit-Modellen mit praxisnahen Produktionswerkzeugen.</p>
-        <div class="btn-row">
-          <a class="btn" href="trial.html" data-keep-lang="true">Testversion anfordern</a>
-          <a class="btn secondary" href="product.html" data-keep-lang="true">Funktionen ansehen</a>
-          <a class="btn ghost" href="docs.html" data-keep-lang="true">Dokumentation öffnen</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-card">
-      <img src="assets/ribbon_en.jpg" alt="AniBIM FT Revit ribbon">
-    </div>
-  </div>
-</section>
-
+<section class="page-hero"><div class="page-hero-inner"><h1 data-lang="en">Request an AniBIM FT Trial</h1><h1 data-lang="de">AniBIM FT Testversion anfordern</h1><p data-lang="en">Submit your details to request installer access and a machine-bound trial license.</p><p data-lang="de">Senden Sie Ihre Daten, um Zugang zum Installer und eine maschinengebundene Testlizenz anzufordern.</p></div></section>
 <main class="wrap">
-  <div class="lang-content en">
-    <h2 class="section-title">Built for daily BIM production</h2>
-    <p class="section-subtitle">Tools are grouped exactly as users work in Revit: selection, visibility, views, reinforcement and quality control.</p>
-    <div class="grid-3">
-      <div class="card"><h3>Smart Selection</h3><p>Select elements by category, parameter and rule-based matching.</p></div>
-      <div class="card"><h3>Visibility Browser</h3><p>Control visibility by categories, assemblies, model groups and parameters.</p></div>
-      <div class="card"><h3>Rebar Workflows</h3><p>Renumber reinforcement, assign partitions and review quantities safely.</p></div>
-      <div class="card"><h3>Rebar Clashes</h3><p>Find reinforcement collisions and focus the active view around the issue.</p></div>
-      <div class="card"><h3>Warnings Resolver</h3><p>Review, group and isolate Revit warnings for faster model cleanup.</p></div>
-      <div class="card"><h3>Configurable Settings</h3><p>Company workflows can be controlled through local or exported JSON profiles.</p></div>
+<div class="grid-2">
+  <section class="card">
+    <div class="lang-content en">
+      <h3>Trial Request Form</h3>
+      <form onsubmit="submitTrialRequest(event)">
+        <div class="field"><label>First Name <span class="req">*</span></label><input name="firstName" required></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input name="lastName" required></div>
+        <div class="field"><label>Company <span class="req">*</span></label><input name="company" required></div>
+        <div class="field"><label>Business Email <span class="req">*</span></label><input name="email" type="email" required></div>
+        <div class="field"><label>Country</label><input name="country"></div>
+        <div class="field"><label>Revit Version</label><select name="revit"><option>Revit 2024</option><option>Revit 2025</option><option>Revit 2026</option><option>Other</option></select></div>
+        <div class="field"><label>Message</label><textarea name="message"></textarea></div>
+        <button class="btn" type="submit">Request Trial by Email</button>
+      </form>
     </div>
-
-    <h2 class="section-title" style="margin-top:36px">Product snapshots</h2>
-    <div class="grid-2">
-      <figure class="product-shot"><img src="assets/visibility_browser.jpg" alt="Visibility Browser"><figcaption>Visibility Browser</figcaption></figure>
-      <figure class="product-shot"><img src="assets/clash_panel.jpg" alt="Rebar Clash Checker"><figcaption>Rebar Clash Checker</figcaption></figure>
+    <div class="lang-content de">
+      <h3>Formular für Testversion</h3>
+      <form onsubmit="submitTrialRequest(event)">
+        <div class="field"><label>Vorname <span class="req">*</span></label><input name="firstName" required></div>
+        <div class="field"><label>Nachname <span class="req">*</span></label><input name="lastName" required></div>
+        <div class="field"><label>Firma <span class="req">*</span></label><input name="company" required></div>
+        <div class="field"><label>Geschäftliche E-Mail <span class="req">*</span></label><input name="email" type="email" required></div>
+        <div class="field"><label>Land</label><input name="country"></div>
+        <div class="field"><label>Revit-Version</label><select name="revit"><option>Revit 2024</option><option>Revit 2025</option><option>Revit 2026</option><option>Andere</option></select></div>
+        <div class="field"><label>Nachricht</label><textarea name="message"></textarea></div>
+        <button class="btn" type="submit">Testversion per E-Mail anfordern</button>
+      </form>
     </div>
-
-    <h2 class="section-title" style="margin-top:36px">Videos</h2>
-    <div class="grid-2">
-      <div class="video-placeholder">Video placeholder: AniBIM FT overview</div>
-      <div class="video-placeholder">Video placeholder: Reinforcement workflow demo</div>
+  </section>
+  <aside class="card">
+    <div class="lang-content en">
+      <h3>Trial workflow</h3>
+      <ol class="steps"><li>Submit the trial request email.</li><li>AniBIM Support sends the installer link.</li><li>Install AniBIM FT and start Revit.</li><li>Send your Machine ID from the activation window.</li><li>Receive and install your trial license.</li></ol>
+      <div class="note">Trial licenses are signed and machine-bound.</div>
     </div>
-  </div>
-
-  <div class="lang-content de">
-    <h2 class="section-title">Für die tägliche BIM-Produktion entwickelt</h2>
-    <p class="section-subtitle">Die Werkzeuge sind so gegliedert, wie Anwender in Revit arbeiten: Auswahl, Sichtbarkeit, Ansichten, Bewehrung und Qualitätskontrolle.</p>
-    <div class="grid-3">
-      <div class="card"><h3>Intelligente Auswahl</h3><p>Elemente nach Kategorie, Parameter und Regelabgleich auswählen.</p></div>
-      <div class="card"><h3>Sichtbarkeitsbrowser</h3><p>Sichtbarkeit nach Kategorien, Baugruppen, Modellgruppen und Parametern steuern.</p></div>
-      <div class="card"><h3>Bewehrungsabläufe</h3><p>Bewehrung neu nummerieren, Partitionen zuweisen und Mengen sicher prüfen.</p></div>
-      <div class="card"><h3>Bewehrungskollisionen</h3><p>Kollisionen finden und die Ansicht auf das Problem fokussieren.</p></div>
-      <div class="card"><h3>Warnungen lösen</h3><p>Revit-Warnungen prüfen, gruppieren und betroffene Elemente isolieren.</p></div>
-      <div class="card"><h3>Konfigurierbare Einstellungen</h3><p>Unternehmensabläufe über lokale oder exportierte JSON-Profile steuern.</p></div>
+    <div class="lang-content de">
+      <h3>Ablauf der Testversion</h3>
+      <ol class="steps"><li>Testanfrage per E-Mail senden.</li><li>AniBIM Support sendet den Installer-Link.</li><li>AniBIM FT installieren und Revit starten.</li><li>Maschinen-ID aus dem Aktivierungsfenster senden.</li><li>Testlizenz erhalten und installieren.</li></ol>
+      <div class="note">Testlizenzen sind signiert und maschinengebunden.</div>
     </div>
-
-    <h2 class="section-title" style="margin-top:36px">Produktschnappschüsse</h2>
-    <div class="grid-2">
-      <figure class="product-shot"><img src="assets/visibility_browser.jpg" alt="Sichtbarkeitsbrowser"><figcaption>Sichtbarkeitsbrowser</figcaption></figure>
-      <figure class="product-shot"><img src="assets/clash_panel.jpg" alt="Bewehrungskollisionen"><figcaption>Bewehrungskollisionen</figcaption></figure>
-    </div>
-
-    <h2 class="section-title" style="margin-top:36px">Videos</h2>
-    <div class="grid-2">
-      <div class="video-placeholder">Video-Platzhalter: AniBIM FT Übersicht</div>
-      <div class="video-placeholder">Video-Platzhalter: Bewehrungsworkflow</div>
-    </div>
-  </div>
+  </aside>
+</div>
 </main>
 
 <footer class="footer">AniBIM FT · <a href="docs.html" data-keep-lang="true">Documentation</a> · <a href="trial.html" data-keep-lang="true">Request Trial</a></footer>
@@ -241,6 +205,31 @@ function setLanguage(language) {
   setLanguage(queryLanguage || browserLanguage);
 })();
 
+
+function formValue(form, name) {
+  return form.elements[name] ? form.elements[name].value.trim() : "";
+}
+function submitTrialRequest(event) {
+  event.preventDefault();
+  var form = event.target;
+  var subject = "AniBIM FT Trial Request";
+  var body =
+    "Hello AniBIM Support,\r\n\r\n" +
+    "I would like to request an AniBIM FT trial.\r\n\r\n" +
+    "First Name: " + formValue(form, "firstName") + "\r\n" +
+    "Last Name: " + formValue(form, "lastName") + "\r\n" +
+    "Company: " + formValue(form, "company") + "\r\n" +
+    "Business Email: " + formValue(form, "email") + "\r\n" +
+    "Country: " + formValue(form, "country") + "\r\n" +
+    "Revit Version: " + formValue(form, "revit") + "\r\n\r\n" +
+    "Message:\r\n" + formValue(form, "message") + "\r\n\r\n" +
+    "Regards";
+  window.location.href =
+    "mailto:AniBIM.Support@gmail.com?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+}
 </script>
 </body>
 </html>
