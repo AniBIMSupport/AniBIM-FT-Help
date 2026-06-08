@@ -44,20 +44,52 @@ body.lang-de .site-actions [data-lang="de"]{display:inline-block !important}
 body.lang-en .nav-actions [data-lang="en"],
 body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
 
+
+/* AniBIM v2 language hardening */
+[data-lang]{display:none !important}
+body.lang-en [data-lang="en"]{display:initial !important}
+body.lang-de [data-lang="de"]{display:initial !important}
+.lang-content{display:none !important}
+body.lang-en .lang-content.en{display:block !important}
+body.lang-de .lang-content.de{display:block !important}
+body.lang-en .lang-content.de,
+body.lang-de .lang-content.en{display:none !important}
+.nav-actions .lang-content{display:none !important}
+body.lang-en .nav-actions .lang-content.en{display:flex !important}
+body.lang-de .nav-actions .lang-content.de{display:flex !important}
+.nav-actions .lang-content.en,
+.nav-actions .lang-content.de{gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+
+
+.site-actions .lang-content{display:none !important}
+body.lang-en .site-actions .lang-content.en{display:flex !important}
+body.lang-de .site-actions .lang-content.de{display:flex !important}
+.site-actions .lang-content.en,.site-actions .lang-content.de{gap:8px;flex-wrap:wrap;justify-content:flex-end}
+
 </style>
 </head>
 <body class="lang-en">
 <header><div class="top"><div><h1>AniBIM</h1><div class="subtitle">AniBIM FT</div><p data-lang="en">Simple help for the AniBIM FT Revit tools, arranged exactly by ribbon panel.</p><p data-lang="de">Einfache Hilfe für die AniBIM-FT-Revit-Werkzeuge, exakt nach Ribbon-Bereich geordnet.</p></div><div class="header-tools">
-<div class="site-actions">
-<a href="index.html" data-keep-lang="true" data-lang="en">Home</a><a href="index.html" data-keep-lang="true" data-lang="de">Start</a>
-<a href="product.html" data-keep-lang="true" data-lang="en">Product</a><a href="product.html" data-keep-lang="true" data-lang="de">Produkt</a>
-<a href="trial.html" data-keep-lang="true" class="primary" data-lang="en">Request Trial</a><a href="trial.html" data-keep-lang="true" class="primary" data-lang="de">Testversion</a>
-<a href="pricing.html" data-keep-lang="true" data-lang="en">Purchase</a><a href="pricing.html" data-keep-lang="true" data-lang="de">Kaufen</a>
-<a href="about.html" data-keep-lang="true" data-lang="en">About</a><a href="about.html" data-keep-lang="true" data-lang="de">Über uns</a>
-<a href="download.html" data-keep-lang="true" data-lang="en">Download</a><a href="download.html" data-keep-lang="true" data-lang="de">Download</a>
-</div>
-<div class="lang"><button id="btn-en" onclick="setLanguage('en')">English</button> <button id="btn-de" onclick="setLanguage('de')">Deutsch</button></div>
-</div></div></header>
+      <div class="site-actions">
+        <div class="lang-content en">
+          <a href="index.html" data-keep-lang="true">Home</a>
+          <a href="product.html" data-keep-lang="true">Product</a>
+          <a href="trial.html" data-keep-lang="true" class="primary">Request Trial</a>
+          <a href="pricing.html" data-keep-lang="true">Purchase</a>
+          <a href="about.html" data-keep-lang="true">About</a>
+          <a href="download.html" data-keep-lang="true">Download</a>
+        </div>
+        <div class="lang-content de">
+          <a href="index.html" data-keep-lang="true">Start</a>
+          <a href="product.html" data-keep-lang="true">Produkt</a>
+          <a href="trial.html" data-keep-lang="true" class="primary">Testversion</a>
+          <a href="pricing.html" data-keep-lang="true">Kaufen</a>
+          <a href="about.html" data-keep-lang="true">Über uns</a>
+          <a href="download.html" data-keep-lang="true">Download</a>
+        </div>
+      </div>
+      <div class="lang"><button id="btn-en" onclick="setLanguage('en')">English</button> <button id="btn-de" onclick="setLanguage('de')">Deutsch</button></div>
+    </div></div></header>
 <div class="wrap">
 <nav>
 <div data-lang="en">

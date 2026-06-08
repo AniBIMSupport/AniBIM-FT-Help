@@ -114,9 +114,26 @@ body.lang-de .site-actions [data-lang="de"]{display:inline-block !important}
 body.lang-en .nav-actions [data-lang="en"],
 body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
 
+
+/* AniBIM v2 language hardening */
+[data-lang]{display:none !important}
+body.lang-en [data-lang="en"]{display:initial !important}
+body.lang-de [data-lang="de"]{display:initial !important}
+.lang-content{display:none !important}
+body.lang-en .lang-content.en{display:block !important}
+body.lang-de .lang-content.de{display:block !important}
+body.lang-en .lang-content.de,
+body.lang-de .lang-content.en{display:none !important}
+.nav-actions .lang-content{display:none !important}
+body.lang-en .nav-actions .lang-content.en{display:flex !important}
+body.lang-de .nav-actions .lang-content.de{display:flex !important}
+.nav-actions .lang-content.en,
+.nav-actions .lang-content.de{gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+
 </style>
 </head>
 <body class="lang-en">
+
 
 <header class="site-header">
   <div class="navbar">
@@ -125,12 +142,22 @@ body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
       <div class="brand-text"><strong>AniBIM</strong><span>AniBIM FT</span></div>
     </a>
     <nav class="nav-actions">
-      <a class="nav-link" href="product.html" data-keep-lang="true" data-lang="en">Product</a><a class="nav-link" href="product.html" data-keep-lang="true" data-lang="de">Produkt</a>
-      <a class="nav-link primary" href="trial.html" data-keep-lang="true" data-lang="en">Request Trial</a><a class="nav-link primary" href="trial.html" data-keep-lang="true" data-lang="de">Testversion</a>
-      <a class="nav-link" href="pricing.html" data-keep-lang="true" data-lang="en">Purchase</a><a class="nav-link" href="pricing.html" data-keep-lang="true" data-lang="de">Kaufen</a>
-      <a class="nav-link" href="about.html" data-keep-lang="true" data-lang="en">About</a><a class="nav-link" href="about.html" data-keep-lang="true" data-lang="de">Über uns</a>
-      <a class="nav-link" href="docs.html" data-keep-lang="true" data-lang="en">Documentation</a><a class="nav-link" href="docs.html" data-keep-lang="true" data-lang="de">Dokumentation</a>
-      <a class="nav-link" href="download.html" data-keep-lang="true" data-lang="en">Download</a><a class="nav-link" href="download.html" data-keep-lang="true" data-lang="de">Download</a>
+      <div class="lang-content en">
+        <a class="nav-link" href="product.html" data-keep-lang="true">Product</a>
+        <a class="nav-link primary" href="trial.html" data-keep-lang="true">Request Trial</a>
+        <a class="nav-link" href="pricing.html" data-keep-lang="true">Purchase</a>
+        <a class="nav-link" href="about.html" data-keep-lang="true">About</a>
+        <a class="nav-link" href="docs.html" data-keep-lang="true">Documentation</a>
+        <a class="nav-link" href="download.html" data-keep-lang="true">Download</a>
+      </div>
+      <div class="lang-content de">
+        <a class="nav-link" href="product.html" data-keep-lang="true">Produkt</a>
+        <a class="nav-link primary" href="trial.html" data-keep-lang="true">Testversion</a>
+        <a class="nav-link" href="pricing.html" data-keep-lang="true">Kaufen</a>
+        <a class="nav-link" href="about.html" data-keep-lang="true">Über uns</a>
+        <a class="nav-link" href="docs.html" data-keep-lang="true">Dokumentation</a>
+        <a class="nav-link" href="download.html" data-keep-lang="true">Download</a>
+      </div>
       <div class="lang">
         <button id="btn-en" onclick="setLanguage('en')">English</button>
         <button id="btn-de" onclick="setLanguage('de')">Deutsch</button>
@@ -138,6 +165,7 @@ body.lang-de .nav-actions [data-lang="de"]{display:inline-block !important}
     </nav>
   </div>
 </header>
+
 
 <section class="page-hero"><div class="page-hero-inner"><h1 data-lang="en">Request an AniBIM FT Trial</h1><h1 data-lang="de">AniBIM FT Testversion anfordern</h1><p data-lang="en">Submit your details to request installer access and a machine-bound trial license.</p><p data-lang="de">Senden Sie Ihre Daten, um Zugang zum Installer und eine maschinengebundene Testlizenz anzufordern.</p></div></section>
 <main class="wrap">
