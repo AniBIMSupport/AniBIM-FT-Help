@@ -1,0 +1,27 @@
+key,panel_en,panel_de,name_en,name_de,icon,tooltip
+AssemblyCreator,Assembly,Baugruppen,Assembly Creator,Baugruppenersteller,AssemblyEditor32.png,AssemblyEditor_Tooltip.png
+AssemblyEditor,Assembly,Baugruppen,Assembly Editor,Baugruppen-Editor,AssemblyEditor32.png,AssemblyEditor_Tooltip.png
+MultiRuleSelect,Select,Auswählen,Rule Selection,Regelwahlen,SmartSelection32.png,SmartSelection_Tooltip.png
+ReverseSelection,Select,Auswählen,Invert,Umkehren,Invert32.png,Invert_Tooltip.png
+AssemblyBrowser,Select,Auswählen,Assembly Browser,Assembly Browser,Browser32.png,Browser_Tooltip.png
+SelectSimilar,Select,Auswählen,Category / Select Similar,Kategorie / Ähnliche auswählen,SmartSelection32.png,SmartSelection_Tooltip.png
+VisibilityBrowser,Selection,Auswahl,Visibility Browser,Sichtbarkeit Browser,Browser32.png,Browser_Tooltip.png
+TransparentContext,Selection,Auswahl,Spotlight,Hervorheben,Spotlight32.png,Spotlight_Tooltip.png
+TransparentSelected,Selection,Auswahl,Transparent,Transparent,Transparent32.png,Transparent_Tooltip.png
+ToggleParts,Selection,Auswahl,ToggleParts,ToggleParts,Parts32.png,Parts_Tooltip.png
+BeamLengthEditor,Modelling,Modellierung,Beam Length,Trägerlänge,BeamLengthEditor16.png,
+ToggleBeamJoinAtStart,Modelling,Modellierung,Toggle Start Join,Startverbindung umschalten,ToggleBeamJoinAtStart16.png,
+ToggleBeamJoinAtEnd,Modelling,Modellierung,Toggle End Join,Endverbindung umschalten,ToggleBeamJoinAtEnd16.png,
+SectionsBySelectionBox,Views,Ansichten,Sections by SelectionBox,Schnitte nach Auswahlbox,SectionsBySelectionBox32.png,SectionsBySelectionBox_Tooltip.png
+RenumberAssemblyReinforcement,Reinforcement,Bewehrung,Renumber,Bewehrung nummerieren,Renumber32.png,Renumber_Tooltip.png
+PartitionAssigner,Reinforcement,Bewehrung,Partition,Teilung,Partition32.png,Partition_Tooltip.png
+MeshCutPlan,Reinforcement,Bewehrung,Mesh Cut Plan,Mattenzuschnitt,MeshCutPlan32.png,MeshCutPlan_Tooltip.png
+WarningResolver,Review,Prüfung,Solve Warnings,Warnungen lösen,SolveWarnings32.png,SolveWarnings_Tooltip.png
+CollisionChecker,Coordination,Koordination,Rebar Clashes,Kollisionen prüfen,RebarClashes32.png,RebarClashes_Tooltip.png
+FabricShapeDetail,Annotate Fabric Sheet,Matten Beschriften,Shape Detail,Formdetail,FabricShapeDetail32.png,FabricShapeDetail_Tooltip.png
+FabricShapeDetailAll,Annotate Fabric Sheet,Matten Beschriften,Shape Detail – All,Formdetail – Alle,FabricShapeDetailAll32.png,FabricShapeDetailAll_Tooltip.png
+FabricShapeDetailTagOnly,Annotate Fabric Sheet,Matten Beschriften,Tag Only,Nur beschriften,TagOnly32.png,TagOnly_Tooltip.png
+FabricShapeDetailTogglePartial,Annotate Fabric Sheet,Matten Beschriften,Partial option,Verdeckt,Checkbox32.png,Partial_Tooltip.png
+FabricShapeDetailToggleTag,Annotate Fabric Sheet,Matten Beschriften,Tag option,Beschriften,Checkedbox32.png,FabricShapeDetailToggleTag_Tooltip.png
+Settings,Settings,Optionen,Settings,Optionen,Settings32.png,Settings_Tooltip.png
+Help,Settings,Optionen,Help,Hilfe,Help32.png,Help_Tooltip.png
