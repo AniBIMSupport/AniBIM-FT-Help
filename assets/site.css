@@ -217,3 +217,31 @@ body.lang-de .pricing-grid .price-card:nth-child(2):after{content:"EMPFOHLEN"}
 .anibim-assistant-trigger{z-index:10020!important}.anibim-assistant{z-index:10021!important}
 @media(max-width:980px){.pricing-grid .price-card:nth-child(2){transform:none}.pricing-grid .price-card:nth-child(2):hover{transform:translateY(-8px)!important}}
 @media(max-width:640px){.footer a.brand{display:inline-flex!important}.pricing-section{padding-top:70px!important}.pricing-grid .price-card{min-height:auto}}
+
+/* V9 assistant: premium right-side orange identity */
+.anibim-assistant-trigger{
+  left:auto!important;right:24px!important;bottom:24px!important;
+  min-height:64px;padding:8px 17px 8px 8px!important;border-radius:22px!important;
+  border:1px solid rgba(255,129,40,.82)!important;
+  background:linear-gradient(145deg,rgba(26,13,4,.98),rgba(5,5,5,.98))!important;
+  box-shadow:0 22px 70px rgba(0,0,0,.84),0 0 0 1px rgba(255,126,32,.12),0 0 38px rgba(255,106,14,.24)!important;
+}
+.anibim-assistant-trigger:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,rgba(255,143,62,.12),transparent 45%);pointer-events:none}
+.assistant-orbit-wrap{position:relative;width:52px;height:52px;display:grid;place-items:center;flex:0 0 52px}
+.assistant-core{width:42px!important;height:42px!important;border-radius:13px!important;font-size:22px!important;background:linear-gradient(145deg,#ff9a45,#f16a0b)!important;box-shadow:inset 0 1px rgba(255,255,255,.35),0 0 24px rgba(255,109,17,.45)!important}
+.assistant-orbit{left:0!important;inset:0!important;width:52px!important;height:52px!important;border-color:rgba(255,139,55,.72)!important;box-shadow:0 0 15px rgba(255,112,17,.14)}
+.assistant-orbit:after{top:-3px!important;left:22px!important;width:7px!important;height:7px!important;background:#ff8a2a!important;box-shadow:0 0 4px #fff,0 0 14px #ff7817!important}
+.assistant-trigger-copy strong{font-size:14px!important}.assistant-trigger-copy small{color:#b9aaa0!important}
+.anibim-assistant{left:auto!important;right:24px!important;bottom:101px!important;width:min(430px,calc(100vw - 32px))!important}
+.assistant-panel{
+  border:1px solid rgba(255,126,32,.86)!important;border-radius:25px!important;
+  background:radial-gradient(circle at 92% 3%,rgba(255,125,29,.28),transparent 34%),linear-gradient(155deg,#211005 0%,#120804 35%,#090909 78%)!important;
+  box-shadow:0 38px 120px rgba(0,0,0,.95),0 0 0 1px rgba(255,136,52,.12),0 0 72px rgba(255,104,8,.27)!important;
+}
+.assistant-head{background:linear-gradient(90deg,rgba(255,118,19,.25),rgba(255,118,19,.05))!important;border-bottom-color:rgba(255,129,40,.3)!important}
+.assistant-messages{background:linear-gradient(180deg,rgba(18,8,3,.62),rgba(3,3,3,.86))}
+.assistant-message.bot .assistant-bubble{background:linear-gradient(145deg,#21140d,#151515)!important;border-color:rgba(255,129,40,.26)!important}
+.assistant-compose{background:rgba(14,7,3,.96)!important;border-top-color:rgba(255,129,40,.3)!important}
+.assistant-compose input{border-color:rgba(255,129,40,.36)!important;background:#0b0806!important}
+.assistant-panel footer{padding-top:9px!important;background:#0d0704;color:#a8795c!important}
+@media(max-width:700px){.anibim-assistant-trigger{left:auto!important;right:14px!important;bottom:14px!important}.anibim-assistant{left:16px!important;right:16px!important;bottom:88px!important;width:auto!important}}
