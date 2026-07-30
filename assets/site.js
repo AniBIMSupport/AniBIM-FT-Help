@@ -36,3 +36,101 @@ function setLanguage(v){
  function shut(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true')}
  trigger.addEventListener('click',()=>panel.classList.contains('open')?shut():open());close.addEventListener('click',shut);form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(q){input.value='';answerQuery(q)}});suggestions.addEventListener('click',e=>{const b=e.target.closest('[data-faq]');if(b)answerIndex(+b.dataset.faq,text(FAQS[+b.dataset.faq],'q'))});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))shut()});document.addEventListener('anibim-language-changed',()=>{document.querySelectorAll('[data-placeholder-'+lang()+']').forEach(e=>e.placeholder=e.getAttribute('data-placeholder-'+lang()));if(panel.classList.contains('open'))welcome()});
 })();
+
+// V10 Assistant desktop behavior: draggable, resizable and persistent.
+(function enhanceAssistantWorkspace(){
+ const assistant=document.getElementById('anibim-assistant');
+ if(!assistant||assistant.dataset.workspaceReady==='true') return;
+ assistant.dataset.workspaceReady='true';
+ const panel=assistant.querySelector('.assistant-panel');
+ const head=assistant.querySelector('.assistant-head');
+ const close=assistant.querySelector('#assistant-close');
+ if(!panel||!head) return;
+
+ let handle=panel.querySelector('.assistant-resize-handle');
+ if(!handle){
+   handle=document.createElement('span');
+   handle.className='assistant-resize-handle';
+   handle.setAttribute('role','separator');
+   handle.setAttribute('aria-label','Resize AniBIM Assistant');
+   panel.appendChild(handle);
+ }
+
+ const storageKey='anibim-assistant-workspace-v10';
+ const clamp=(value,min,max)=>Math.min(Math.max(value,min),max);
+ const isDesktop=()=>window.matchMedia('(min-width:701px)').matches;
+ function bounds(){return {w:window.innerWidth,h:window.innerHeight}}
+ function normalizePosition(left,top,width,height){
+   const b=bounds(),margin=10;
+   return {
+     left:clamp(left,margin,Math.max(margin,b.w-width-margin)),
+     top:clamp(top,margin,Math.max(margin,b.h-height-margin))
+   };
+ }
+ function applySaved(){
+   if(!isDesktop()) return;
+   try{
+     const s=JSON.parse(localStorage.getItem(storageKey)||'null');
+     if(!s) return;
+     const width=clamp(Number(s.width)||470,390,window.innerWidth*.82);
+     const height=clamp(Number(s.height)||680,520,window.innerHeight*.88);
+     const p=normalizePosition(Number(s.left)||24,Number(s.top)||24,width,height);
+     Object.assign(assistant.style,{left:p.left+'px',top:p.top+'px',right:'auto',bottom:'auto',width:width+'px',height:height+'px'});
+   }catch(e){}
+ }
+ function save(){
+   if(!isDesktop()) return;
+   const r=assistant.getBoundingClientRect();
+   try{localStorage.setItem(storageKey,JSON.stringify({left:r.left,top:r.top,width:r.width,height:r.height}))}catch(e){}
+ }
+ function keepInside(){
+   if(!isDesktop()||!assistant.classList.contains('open')) return;
+   const r=assistant.getBoundingClientRect();
+   const width=Math.min(r.width,window.innerWidth*.82),height=Math.min(r.height,window.innerHeight*.88);
+   const p=normalizePosition(r.left,r.top,width,height);
+   Object.assign(assistant.style,{left:p.left+'px',top:p.top+'px',right:'auto',bottom:'auto',width:width+'px',height:height+'px'});
+   save();
+ }
+
+ function startInteraction(event,mode){
+   if(!isDesktop()||event.button!==0) return;
+   if(mode==='move'&&(event.target.closest('button,input,a,.assistant-chip'))) return;
+   event.preventDefault();
+   const start=assistant.getBoundingClientRect();
+   const startX=event.clientX,startY=event.clientY;
+   assistant.classList.add(mode==='move'?'is-moving':'is-resizing');
+   document.body.classList.add('assistant-interacting');
+   event.currentTarget.setPointerCapture?.(event.pointerId);
+   function move(e){
+     if(mode==='move'){
+       const p=normalizePosition(start.left+(e.clientX-startX),start.top+(e.clientY-startY),start.width,start.height);
+       Object.assign(assistant.style,{left:p.left+'px',top:p.top+'px',right:'auto',bottom:'auto'});
+     }else{
+       const maxW=window.innerWidth-start.left-10,maxH=window.innerHeight-start.top-10;
+       const width=clamp(start.width+(e.clientX-startX),390,Math.min(window.innerWidth*.82,maxW));
+       const height=clamp(start.height+(e.clientY-startY),520,Math.min(window.innerHeight*.88,maxH));
+       Object.assign(assistant.style,{width:width+'px',height:height+'px',right:'auto',bottom:'auto'});
+     }
+   }
+   function end(){
+     window.removeEventListener('pointermove',move);
+     window.removeEventListener('pointerup',end);
+     window.removeEventListener('pointercancel',end);
+     assistant.classList.remove('is-moving','is-resizing');
+     document.body.classList.remove('assistant-interacting');
+     save();
+   }
+   window.addEventListener('pointermove',move);
+   window.addEventListener('pointerup',end,{once:true});
+   window.addEventListener('pointercancel',end,{once:true});
+ }
+ head.addEventListener('pointerdown',e=>startInteraction(e,'move'));
+ handle.addEventListener('pointerdown',e=>startInteraction(e,'resize'));
+ close?.addEventListener('pointerdown',e=>e.stopPropagation());
+ window.addEventListener('resize',keepInside);
+
+ // Apply stored geometry immediately and whenever the assistant opens.
+ applySaved();
+ const observer=new MutationObserver(()=>{if(assistant.classList.contains('open')){if(!assistant.style.left) applySaved();setTimeout(keepInside,0)}});
+ observer.observe(assistant,{attributes:true,attributeFilter:['class']});
+})();
