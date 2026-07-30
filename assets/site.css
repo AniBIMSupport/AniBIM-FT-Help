@@ -128,3 +128,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)!important;box-
 
 /* Language switch fix: both EN and DE controls must always remain visible. */
 .lang button[data-lang]{display:inline-flex!important;align-items:center;justify-content:center;min-width:38px}
+
+/* Permanent language controls: not part of translated content visibility. */
+.lang button[data-switch-lang]{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center;justify-content:center;min-width:40px;min-height:38px}
+
+/* Documentation refinement: panel labels use the AniBIM accent consistently. */
+.docs-nav > strong {
+  color: var(--orange) !important;
+  letter-spacing: .105em;
+  font-weight: 800;
+}
+.docs-nav > strong span { color: inherit !important; }
