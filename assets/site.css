@@ -134,8 +134,21 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)!important;box-
 
 /* Documentation refinement: panel labels use the AniBIM accent consistently. */
 .docs-nav > strong {
-  color: var(--orange) !important;
+  color: var(--brand) !important;
   letter-spacing: .105em;
   font-weight: 800;
 }
 .docs-nav > strong span { color: inherit !important; }
+
+/* Final documentation panel heading styling. */
+.docs-nav > strong, .docs-nav > strong > span { color:#f47721 !important; font-weight:900 !important; }
+.footer .youtube-link{
+  color:#f47721 !important;
+  font-weight:800;
+  margin-top:10px;
+}
+.footer .youtube-link:hover{
+  color:#ff9a55 !important;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
