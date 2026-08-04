@@ -354,3 +354,60 @@ body.assistant-interacting{user-select:none!important;cursor:grabbing!important}
   .assistant-resize-handle{display:none}
   .assistant-suggestions{max-height:142px!important}
 }
+
+
+/* AniBIM F1 contextual help styles */
+.tool-section{scroll-margin-top:96px}
+.tool-section.opened-from-revit{
+ position:relative;
+ border-color:#ff7a1a!important;
+ animation:anibimF1Focus 3.5s cubic-bezier(.2,.8,.2,1);
+ box-shadow:0 0 0 2px rgba(255,122,26,.78),0 0 42px rgba(255,122,26,.42),0 30px 85px rgba(0,0,0,.72)!important;
+}
+.tool-section.opened-from-revit:before{
+ content:"F1";
+ position:absolute;
+ top:14px;
+ right:14px;
+ z-index:3;
+ display:grid;
+ place-items:center;
+ width:38px;
+ height:28px;
+ border:1px solid rgba(255,255,255,.25);
+ border-radius:9px;
+ background:linear-gradient(145deg,#ff913d,#ed640b);
+ color:#fff;
+ font-size:12px;
+ font-weight:950;
+ box-shadow:0 8px 24px rgba(255,112,14,.35);
+}
+@keyframes anibimF1Focus{
+ 0%{transform:translateY(8px);filter:brightness(1);box-shadow:0 0 0 0 rgba(255,122,26,0)}
+ 18%{transform:translateY(0);filter:brightness(1.12);box-shadow:0 0 0 3px rgba(255,122,26,.85),0 0 70px rgba(255,122,26,.56)}
+ 100%{filter:brightness(1)}
+}
+.revit-f1-notice{
+ position:fixed;
+ top:92px;
+ left:50%;
+ z-index:12000;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ min-width:270px;
+ padding:12px 16px;
+ border:1px solid rgba(255,126,36,.62);
+ border-radius:16px;
+ background:linear-gradient(135deg,rgba(39,16,5,.97),rgba(8,8,8,.98));
+ color:#fff;
+ box-shadow:0 20px 60px rgba(0,0,0,.72),0 0 36px rgba(255,119,25,.24);
+ opacity:0;
+ transform:translate(-50%,-14px) scale(.97);
+ transition:.25s ease;
+ pointer-events:none;
+}
+.revit-f1-notice.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.revit-f1-notice-icon{display:grid;place-items:center;width:42px;height:32px;border-radius:9px;background:#ff7a1a;color:#fff;font-weight:950}
+.revit-f1-notice strong,.revit-f1-notice small{display:block}.revit-f1-notice small{margin-top:2px;color:#b8b8b8;font-size:11px}
+@media(max-width:700px){.revit-f1-notice{top:76px;min-width:0;width:calc(100vw - 32px)}}

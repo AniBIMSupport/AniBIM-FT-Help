@@ -134,3 +134,52 @@ function setLanguage(v){
  const observer=new MutationObserver(()=>{if(assistant.classList.contains('open')){if(!assistant.style.left) applySaved();setTimeout(keepInside,0)}});
  observer.observe(assistant,{attributes:true,attributeFilter:['class']});
 })();
+
+
+// AniBIM F1 contextual help integration
+(function(){
+ const params=new URLSearchParams(window.location.search);
+ const fromRevit=params.get('from')==='revit';
+ const toolKey=params.get('tool')||'';
+ const rawHash=decodeURIComponent((window.location.hash||'').replace(/^#/,''));
+ if(!fromRevit && !rawHash)return;
+
+ function focusDocumentationTarget(){
+  if(!rawHash)return;
+  const target=document.getElementById(rawHash);
+  if(!target)return;
+
+  // Wait until language and layout updates have completed.
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   target.scrollIntoView({behavior:'smooth',block:'start'});
+   target.classList.remove('opened-from-revit');
+   void target.offsetWidth;
+   target.classList.add('opened-from-revit');
+
+   if(fromRevit){
+    const lang=document.body.classList.contains('lang-de')?'de':'en';
+    const notice=document.createElement('div');
+    notice.className='revit-f1-notice';
+    notice.setAttribute('role','status');
+    notice.innerHTML='<span class="revit-f1-notice-icon">F1</span><div><strong>'+
+      (lang==='de'?'Aus Revit geöffnet':'Opened from Revit')+
+      '</strong><small>'+(lang==='de'?'Kontexthilfe für dieses AniBIM-FT-Werkzeug':'Context help for this AniBIM FT tool')+'</small></div>';
+    document.body.appendChild(notice);
+    setTimeout(()=>notice.classList.add('show'),40);
+    setTimeout(()=>{notice.classList.remove('show');setTimeout(()=>notice.remove(),260)},4200);
+
+    // Share the originating tool with the local AniBIM Assistant when available.
+    try{sessionStorage.setItem('anibim-f1-tool',toolKey)}catch(e){}
+   }
+
+   setTimeout(()=>target.classList.remove('opened-from-revit'),3600);
+  }));
+ }
+
+ if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',focusDocumentationTarget,{once:true});
+ }else{
+  focusDocumentationTarget();
+ }
+ window.addEventListener('hashchange',focusDocumentationTarget);
+})();
