@@ -4,4 +4,4 @@ AniBIM FT Website V8
 - AniBIM Assistant injected on every page
 - 100 bilingual predefined Q&A
 - Related follow-up question tree after every answer
-- Revit 2024 and 2026 support retained
+- Revit 2024–2027 support

@@ -21,7 +21,7 @@ or
 https://anibimsupport.github.io/AniBIM-FT-Help/docs.html?lang=de
 
 Installer path expected:
-downloads/AniBIM_FT_Revit2024_Setup.exe
+downloads/AniBIM_FT_1.0.0_Setup.exe
 
 Trial form:
 Opens mailto:AniBIM.Support@gmail.com with form details.

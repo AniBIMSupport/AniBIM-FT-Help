@@ -3,7 +3,7 @@ AniBIM website download access update
 Upload/replace all website files in GitHub Pages.
 
 Main change:
-- download.html no longer links directly to downloads/AniBIM_FT_Revit2024_Setup.exe.
+- download.html no longer links directly to downloads/AniBIM_FT_1.0.0_Setup.exe.
 - Public users are guided to request trial/download access first.
 - This avoids GitHub Pages 404 and prevents public installer exposure.
 

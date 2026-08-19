@@ -1,1 +1,3 @@
-Place AniBIM_FT_Revit2024_Setup.exe here.
+Place the current multi-version AniBIM FT installer here if direct website download is enabled.
+Recommended release filename: AniBIM_FT_1.0.0_Setup.exe
+Supported Autodesk Revit versions: 2024, 2025, 2026, 2027.
