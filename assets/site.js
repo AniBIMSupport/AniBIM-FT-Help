@@ -183,3 +183,36 @@ function setLanguage(v){
  }
  window.addEventListener('hashchange',focusDocumentationTarget);
 })();
+
+// V13 responsive site navigation and direct WhatsApp support.
+(function(){
+ const header=document.querySelector('.site-header');
+ const navbar=header&&header.querySelector('.navbar');
+ const nav=header&&header.querySelector('.nav-links');
+ if(header&&navbar&&nav&&!navbar.querySelector('.mobile-menu-toggle')){
+  const btn=document.createElement('button');
+  btn.className='mobile-menu-toggle'; btn.type='button'; btn.setAttribute('aria-label','Open navigation'); btn.setAttribute('aria-expanded','false');
+  btn.innerHTML='<span></span>';
+  const wrap=navbar.querySelector('.nav-wrap');
+  navbar.insertBefore(btn,wrap);
+  function closeMenu(){header.classList.remove('mobile-nav-open');btn.classList.remove('is-open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open navigation')}
+  btn.addEventListener('click',()=>{const open=!header.classList.contains('mobile-nav-open');header.classList.toggle('mobile-nav-open',open);btn.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Close navigation':'Open navigation')});
+  nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+  document.addEventListener('click',e=>{if(header.classList.contains('mobile-nav-open')&&!header.contains(e.target))closeMenu()});
+  window.addEventListener('resize',()=>{if(window.innerWidth>980)closeMenu()});
+ }
+ if(!document.querySelector('.whatsapp-support')){
+  const wa=document.createElement('a');
+  wa.className='whatsapp-support'; wa.href='https://wa.me/917760481644?text=Hello%20AniBIM%20Support%2C%20I%20need%20help%20with%20AniBIM%20FT.'; wa.target='_blank'; wa.rel='noopener noreferrer'; wa.setAttribute('aria-label','Chat with AniBIM Support on WhatsApp'); wa.title='WhatsApp Support';
+  wa.innerHTML='<span class="support-tip"><span data-lang="en">WhatsApp Support</span><span data-lang="de">WhatsApp-Support</span></span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.21c-.27-.14-1.61-.79-1.86-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26s.98 2.62 1.11 2.8c.14.18 1.92 2.93 4.65 4.11.65.28 1.16.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.61-.66 1.84-1.29.23-.63.23-1.18.16-1.29-.07-.11-.25-.18-.52-.32zM16.04 4.8A11.08 11.08 0 0 0 6.5 21.5L5 27l5.63-1.48A11.05 11.05 0 1 0 16.04 4.8zm0 20.25c-1.74 0-3.44-.47-4.92-1.35l-.35-.21-3.34.88.89-3.25-.23-.36a9.2 9.2 0 1 1 7.95 4.29z"/></svg>';
+  const assistantTrigger=document.getElementById('anibim-assistant-trigger');
+  document.body.appendChild(wa);
+  function placeWhatsApp(){
+   if(!assistantTrigger)return;
+   const mobile=window.innerWidth<=700;
+   wa.style.right=mobile?'14px':'24px';
+   wa.style.bottom=mobile?'84px':'92px';
+  }
+  placeWhatsApp(); window.addEventListener('resize',placeWhatsApp);
+ }
+})();
