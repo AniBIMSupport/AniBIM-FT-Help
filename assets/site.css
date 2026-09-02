@@ -577,3 +577,26 @@ linear-gradient(155deg,#161616 0%,#090909 52%,#020202 100%);position:relative;ov
   .service-video-caption{padding:48px 20px 18px}
   .service-video-caption h3{font-size:18px}
 }
+
+
+/* V20 Services YouTube embed */
+.service-youtube-video{
+  border:0;
+  aspect-ratio:16/9;
+  min-height:0!important;
+  background:#050505;
+}
+.service-video-media{
+  min-height:0!important;
+  aspect-ratio:16/9;
+}
+.service-video-caption{
+  display:none;
+}
+@media(max-width:640px){
+  .service-video-media,
+  .service-youtube-video{
+    min-height:0!important;
+    aspect-ratio:16/9;
+  }
+}
