@@ -600,3 +600,140 @@ linear-gradient(155deg,#161616 0%,#090909 52%,#020202 100%);position:relative;ov
     aspect-ratio:16/9;
   }
 }
+
+
+/* V21 Services visual polish */
+.service-video-card{
+  min-height:0!important;
+  padding:12px!important;
+  border:1px solid rgba(255,122,26,.78)!important;
+  background:linear-gradient(145deg,rgba(255,122,26,.15),rgba(8,8,8,.98))!important;
+  box-shadow:
+    0 28px 80px rgba(0,0,0,.58),
+    0 0 0 1px rgba(255,122,26,.12),
+    0 0 34px rgba(255,122,26,.22)!important;
+}
+.service-video-media{
+  border:1px solid rgba(255,255,255,.09)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,122,26,.06);
+}
+.service-youtube-video{
+  width:100%;
+  display:block;
+  border-radius:16px;
+}
+
+/* stronger AniBIM orange glazing for platform cards */
+.platform-badges span{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,122,26,.46)!important;
+  background:
+    linear-gradient(135deg,rgba(255,122,26,.08),rgba(14,14,14,.96) 34%,#0b0b0b)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.03),
+    0 10px 28px rgba(0,0,0,.28),
+    0 0 18px rgba(255,122,26,.08);
+  transition:.22s ease;
+}
+.platform-badges span:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:42%;
+  height:2px;
+  background:linear-gradient(90deg,#ff7a1a,rgba(255,122,26,.15));
+  box-shadow:0 0 14px rgba(255,122,26,.65);
+}
+.platform-badges span:hover{
+  border-color:rgba(255,122,26,.82)!important;
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 15px 34px rgba(0,0,0,.36),
+    0 0 24px rgba(255,122,26,.16);
+}
+
+/* review card orange brand line + glazing */
+.review-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,122,26,.42)!important;
+  background:
+    linear-gradient(145deg,rgba(255,122,26,.055),rgba(14,14,14,.98) 28%,#080808)!important;
+  box-shadow:
+    0 22px 54px rgba(0,0,0,.34),
+    0 0 22px rgba(255,122,26,.08);
+}
+.review-card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:48%;
+  height:3px;
+  background:linear-gradient(90deg,#ff7a1a,rgba(255,122,26,.18));
+  box-shadow:0 0 16px rgba(255,122,26,.72);
+}
+.review-card:after{
+  content:"";
+  position:absolute;
+  right:-70px;
+  top:-70px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(255,122,26,.07);
+  filter:blur(16px);
+  pointer-events:none;
+}
+.review-card>*{position:relative;z-index:1}
+
+/* Make a single approved review feel intentional instead of left-small */
+.review-grid:has(.review-card:only-child){
+  grid-template-columns:minmax(0,1fr);
+}
+.review-grid:has(.review-card:only-child) .review-card{
+  max-width:none;
+  min-height:0;
+}
+.review-grid:has(.review-card:only-child) .review-card>p{
+  max-width:980px;
+  font-size:clamp(19px,1.55vw,24px);
+}
+@media(min-width:900px){
+  .review-grid:has(.review-card:only-child) .review-card{
+    padding:36px 40px;
+  }
+}
+
+/* Match services cards with subtle orange top detail */
+.engineering-service-card{
+  border-color:rgba(255,255,255,.11)!important;
+}
+.engineering-service-card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#ff7a1a,rgba(255,122,26,.12));
+  transition:width .25s ease;
+  box-shadow:0 0 12px rgba(255,122,26,.42);
+}
+.engineering-service-card:hover:before{width:58%}
+.engineering-service-card.featured:before{width:58%}
+
+/* Fallback where :has isn't available */
+@supports not selector(:has(*)){
+  .review-grid{grid-template-columns:1fr}
+  .review-card{max-width:none}
+}
+
+@media(max-width:640px){
+  .service-video-card{padding:8px!important}
+  .platform-badges{grid-template-columns:1fr}
+  .review-card{padding:26px 22px!important}
+}
