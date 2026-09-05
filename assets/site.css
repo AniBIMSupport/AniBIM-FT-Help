@@ -1092,3 +1092,6 @@ linear-gradient(155deg,#161616 0%,#090909 52%,#020202 100%);position:relative;ov
 .download-steps-v25 p{color:#bcbcbc;line-height:1.65}
 @media(max-width:900px){.download-steps-v25{grid-template-columns:repeat(2,minmax(0,1fr))}.download-steps-v25 article:nth-child(2){border-right:0}.download-steps-v25 article:nth-child(-n+2){border-bottom:1px solid rgba(255,122,26,.16)}}
 @media(max-width:640px){.download-hero-v25{padding:58px 0 50px}.download-hero-v25 h1{font-size:clamp(42px,12vw,58px)}.download-steps-v25{grid-template-columns:1fr}.download-steps-v25 article{min-height:0;border-right:0!important;border-bottom:1px solid rgba(255,122,26,.16)}.download-steps-v25 article:last-child{border-bottom:0}}
+
+/* V27 frictionless trial download */
+.direct-trial-card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:radial-gradient(circle at 100% 100%,rgba(255,122,26,.13),transparent 40%),#090909;border-color:rgba(255,122,26,.34);color:#fff}.direct-trial-card p{color:#bdbdbd}.direct-trial-card .btn{margin-top:12px;min-width:240px}.direct-trial-note{font-size:13px;margin-top:14px}
